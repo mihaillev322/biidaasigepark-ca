@@ -1,0 +1,478 @@
+/* ========================================
+   CSS Variables – Biidaasige Cedar-Slate Editorial
+   ======================================== */
+:root {
+  --color-primary: #1F6B5B;
+  --color-secondary: #2E3A59;
+  --color-accent: #C46A2B;
+  --color-bg: #F6F2EA;
+  --color-surface: #FFFFFF;
+  --color-text: #1B1E24;
+  --color-muted: #5B6472;
+  --color-border: #D7D0C4;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(27,30,36,0.10);
+  --space: 1rem;
+  --maxw: 72rem;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+/* ========================================
+   Base & Reset
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   Typography – Mobile-first with clamp()
+   ======================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+strong {
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   Layout – CSS Grid main columns
+   ======================================== */
+.container {
+  max-width: var(--maxw);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space);
+  padding-right: var(--space);
+}
+
+main {
+  min-height: 60vh;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+/* ========================================
+   Header – Flexbox for nav/footer clusters
+   ======================================== */
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 2px solid var(--color-border);
+  padding: 1.25rem 0;
+  box-shadow: var(--shadow);
+}
+
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-branding .site-name {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.main-nav a {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+/* ========================================
+   Breadcrumbs
+   ======================================== */
+.breadcrumbs {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 0;
+  font-size: 0.9rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.breadcrumbs li::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: var(--color-muted);
+}
+
+.breadcrumbs li:last-child::after {
+  content: "";
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.site-footer {
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ========================================
+   Page Header
+   ======================================== */
+.page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+/* ========================================
+   Content Sections
+   ======================================== */
+.content-section {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px) {
+  .content-section {
+    padding: 2.5rem;
+  }
+}
+
+/* ========================================
+   Tables – sticky header, zebra striping
+   ======================================== */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+caption {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  text-align: left;
+  padding: 1rem;
+  background-color: var(--color-bg);
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+@media (min-width: 1024px) {
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+th {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--color-bg);
+}
+
+tbody tr:hover {
+  background-color: #EDE8DC;
+}
+
+/* ========================================
+   Details/Summary – accordion with hover and open-state emphasis
+   ======================================== */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--color-primary);
+}
+
+.faq-item[open] {
+  border-color: var(--color-accent);
+  border-width: 3px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: "+";
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::before {
+  content: "−";
+  transform: rotate(90deg);
+}
+
+.faq-item summary:hover {
+  color: var(--color-accent);
+}
+
+.faq-item summary h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.faq-answer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ========================================
+   Blockquote – callout with left border and subtle surface shadow
+   ======================================== */
+blockquote {
+  background-color: var(--color-surface);
+  border-left: 5px solid var(--color-accent);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   Responsive Breakpoints
+   ======================================== */
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  .site-header .container {
+    flex-wrap: nowrap;
+  }
+
+  .main-nav ul {
+    gap: 2rem;
+  }
+
+  main {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .content-section {
+    padding: 3rem;
+  }
+}
+
+/* ========================================
+   Accessibility – focus-visible ring
+   ======================================== */
+button:focus-visible,
+summary:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .site-header,
+  .site-footer,
+  .breadcrumbs {
+    display: none;
+  }
+
+  a {
+    text-decoration: underline;
+    color: black;
+  }
+
+  .content-section {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
